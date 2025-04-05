@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <body>
+    <head>
+        <title>Homepage</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+const x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+    </body>
+    <body>
+        <head>
+            <title>Simple Marker</title>
+            <!-- The callback parameter is required, so we use console.debug as a noop -->
+            <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClqRd5uLObGLdbF-KDkaLO1xEN6X0grOc&callback=console.debug&libraries=maps,marker&v=beta">
+            
+            </script>
+            <style>
+              /* Always set the map height explicitly to define the size of the div
+               * element that contains the map. */
+              gmp-map {
+                height: 80%;
+              }
+        
+              /* Optional: Makes the sample page fill the window. */
+              html,
+              body {
+                height: 80%;
+                margin: 0;
+                padding: 0;
+              }
+            </style>
+          </head>
+          <body>
+            <gmp-map center="32.9859827,-96.7512878" zoom="4" map-id="DEMO_MAP_ID">
+              <gmp-advanced-marker position="32.9859827,-96.7512878" title="My location"></gmp-advanced-marker>
+            </gmp-map>
+          </body>
+</html>
