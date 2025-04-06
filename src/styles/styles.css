@@ -1,52 +1,60 @@
 /* Title Div */
 .title-div {
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #FF6F3C; /* Bright orange */
     text-align: center;
     padding: 20px 0;
     margin-bottom: 30px;
-  }
-  
-  .title-div h1 {
+}
+
+.title-div h1 {
     font-size: 40px;
-    color: #333;
+    color: #FFF4E6; /* Warm cream */
     margin: 0;
-  }
-  
- 
+    flex: 1; /* Allow the title to take up available space */
+    text-align: center; /* Center the title */
+}
 
+.title-div p {
+    font-size: 18px;
+    color: #FFF4E6; /* Warm cream */
+    margin: 0;
+    text-align: center;
+    margin-top: 10px; /* Add some space between title and subtitle */
+}
 
-  /* General Layout */
-  .big-div {
+/* General Layout */
+.big-div {
     display: flex;
     justify-content: space-between;
     padding: 20px;
-  }
-  
-  .left-div {
+}
+
+.left-div {
     flex: 1;
     margin-right: 20px;
-  }
-  
-  .right-big-div {
+}
+
+.right-big-div {
     flex: 0.4;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-top: -30px;
-  }
-  
-  /* Search Bar */
+}
+
+/* Search Bar */
 .search-bar {
     margin-bottom: 50px;
-    background-color: #d9d9d9;
+    background-color: #F7C59F; /* Light beige */
     border-radius: 20px;
     padding: 10px;
     display: flex;
     align-items: center;
     width: 50%;
     margin-left: 165px;
-    position: relative; /* For positioning the search icon */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+
 }
 
 .search-input {
@@ -55,133 +63,133 @@
     outline: none;
     background: transparent;
     font-size: 16px;
-    color: #000;
-    padding-left: 35px; /* Add padding to make space for the icon */
+    color: #562916; /* Dark text */
 }
 
-.search-icon {
-    position: absolute;
-    left: 10px; /* Position the icon inside the search bar */
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #888;
-}
-  
-  /* Map */
-  .rectangle {
+/* Map */
+.rectangle {
     width: 80%; /* Full width of the container */
     height: 400px; /* Restored height */
-    background-color: #d9d9d9;
+    background-color: #FF9F68; /* Soft peach */
     border-radius: 10px;
     margin-left: 40px;
-  }
-  
-  /* Scrollable Sections */
-  .scrollable-section {
+}
+
+/* Scrollable Sections */
+.scrollable-section {
     margin-bottom: 20px;
-  }
-  
-  .section-title {
+}
+
+.section-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-  }
-  
-  .scroll-container {
+    color: #562916; /* Bright orange */
+}
+
+.scroll-container {
     display: flex;
     overflow-x: auto;
     gap: 30px;
     padding-bottom: 10px;
     margin-left: -100px; /* Shift the entire container to the left */
-  }
-  
-  .scroll-container::-webkit-scrollbar { display: flex;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: flex;
     overflow-x: auto; /* Enable horizontal scrolling */
     gap: 15px; /* Space between items */
     padding-bottom: 10px;
     scrollbar-width: thin; /* For Firefox: Make the scrollbar thinner */
-    scrollbar-color: #ccc #f5f5f5; /* For Firefox: Customize scrollbar colors */
+    scrollbar-color: #FF6F3C #F7C59F; /* Bright orange thumb, light beige track */
     border-bottom: 1px solid transparent;
     height: 8px;
-  }
-  
-  .scroll-container::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #FF6F3C; /* Bright orange */
     border-radius: 4px;
-  }
-  
-  .scroll-container::-webkit-scrollbar-track {
-    background-color: #f5f5f5;
-  }
-  
-  /* Circle Items */
-  .circle-item {
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: #F7C59F; /* Light beige */
+}
+
+/* Circle Items */
+.circle-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .circle {
+    
+}
+
+.circle {
     width: 120px;
     height: 120px;
-    background-color: #d9d9d9;
+    background-color: #F7C59F; /* Soft peach */
     border-radius: 50%;
     margin-bottom: 5px;
-  }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
 
-  /* User Circle */
+}
+
+/* User Circle */
 .user-circle {
     position: absolute;
     top: 20px; /* Adjust the vertical position */
     right: 20px; /* Adjust the horizontal position */
-    width: 40px; /* Circle width */
-    height: 40px; /* Circle height */
-    background-color: #ccc; /* Placeholder color for the user */
+    width: 50px; /* Circle width */
+    height: 50px; /* Circle height */
+    background-color: #fda6af; /* Bright orange */
     border-radius: 50%; /* Make it a circle */
-    border: 2px solid #fff; /* Optional: Add a border */
+    border: 2px solid #FFF4E6; /* Warm cream border */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
     cursor: pointer; /* Indicate it's clickable */
 }
-  
-  .place-name {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
-  }
 
-  /* Image Items */
+.place-name {
+    font-size: 14px;
+    color: #333; /* Dark text */
+    text-align: center;
+}
+
+/* Image Items */
 .image-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .image {
+    
+}
+
+.image {
     width: 130px;
     height: 130px;
     object-fit: cover; /* Ensure the image fits within the dimensions */
     border-radius: 80px; /* Optional: Add rounded corners */
     margin-bottom: 5px;
-  }
-  
-  .place-name {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
-  }
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
 
-  /* Dropdown Menu */
+}
+
+.place-name {
+    font-size: 14px;
+    color: #333; /* Dark text */
+    text-align: center;
+}
+
+/* Dropdown Menu */
 .dropdown-menu {
     position: absolute;
     top: 70px; /* Position below the user circle */
     right: 20px; /* Align with the user circle */
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #F7C59F; /* Light beige */
+    border: 1px solid #562916; /* Bright orange */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 150px;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+
 }
 
 .dropdown-menu ul {
@@ -197,11 +205,20 @@
 }
 
 .dropdown-menu li:hover {
-    background-color: #f5f5f5;
+    background-color: #FF8A5B; /* Slightly darker orange */
 }
 
 .dropdown-menu a {
     text-decoration: none;
-    color: #333;
+    color: #562916; /* Dark text */
     display: block;
+}
+
+/* General Body Styling */
+body {
+    background-color: #ffead7; /* Light warm cream */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: 'Arial', sans-serif; /* Optional: Set a consistent font */
+    color: #333; /* Dark text for contrast */
 }
