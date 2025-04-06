@@ -58,56 +58,60 @@ const HomePage = () => {
     console.log("Search Query:", event.target.value); // Handle search logic here
   };
 
+  const renderScrollableSection = (title, items) => (
+    <div className="scrollable-section">
+      <h3 className="section-title">{title}</h3>
+      <div className="scroll-container">
+        {items.map((item, index) => (
+          <div key={index} className="circle-item">
+            <div className="circle"></div>
+            <p className="place-name">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="homepage">
-      <div className="div">
-        {/* Removed the ellipse */}
-        {/* Search Bar */}
-        <div className="search-bar">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={handleSearch}
-          />
+      {/* Title Div */}
+      <div className="title-div">
+        <h1>EnVoyage</h1>
+      </div>
+
+      <div className="big-div">
+        {/* Left Side: Search Bar and Map */}
+        <div className="left-div">
+          {/* Search Bar */}
+          <div className="search-bar">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+
+          {/* Map */}
+          <div id="map" className="rectangle"></div>
         </div>
 
-        {/* Map */}
-        <div id="map" className="rectangle"></div>
-
-        <h1 className="text-wrapper-1">EnVoyage</h1>
-        <p className="text-wrapper">
-          Let’s Transcend Time/Living through the past
-        </p>        
-        <div className="ellipse-3" />
-        <div className="ellipse-4" />
-        <div className="ellipse-5" />
-        <div className="ellipse-6" />
-        <div className="text-wrapper-2">Recent Exploration</div>
-        <div className="text-wrapper-3">Historical Hotspots</div>
-        <div className="text-wrapper-4">Self-Guided Tours</div>
-        <div className="text-wrapper-5">Recent Community Posts</div>
-        <div className="rectangle-2" />
-        <div className="rectangle-3" />
-        <div className="rectangle-4" />
-        <div className="rectangle-5" />
-        <div className="rectangle-6" />
-        <div className="rectangle-7" />
-        <div className="rectangle-8" />
-        <div className="rectangle-9" />
-        <div className="rectangle-10" />
-        <div className="rectangle-11" />
-        <div className="rectangle-12" />
-        <div className="rectangle-13" />
-
-        {/* Map Controls */}
-        <div className="container" style={{ marginTop: "20px" }}>
-          <button className="button" onClick={getLocation}>
-            Show My Location
-          </button>
-          {error && <p id="demo" style={{ color: "red" }}>{error}</p>}
+        {/* Right Side: Sections */}
+        <div className="right-big-div">
+          {renderScrollableSection("Recent Exploration", ["Place 1", "Place 2", "Place 3"])}
+          {renderScrollableSection("Historical Hotspots", ["Hotspot 1", "Hotspot 2", "Hotspot 3"])}
+          {renderScrollableSection("Self-Guided Tours", ["Tour 1", "Tour 2", "Tour 3"])}
+          {renderScrollableSection("Recent Community Posts", ["Post 1", "Post 2", "Post 3"])}
         </div>
+      </div>
+
+      {/* Map Controls */}
+      <div className="container">
+        <button className="button" onClick={getLocation}>
+          Show My Location
+        </button>
+        {error && <p id="demo" style={{ color: "red" }}>{error}</p>}
       </div>
     </div>
   );
