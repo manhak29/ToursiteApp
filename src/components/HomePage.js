@@ -19,17 +19,12 @@ const HomePage = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          console.log("Current Location:", position.coords.latitude, position.coords.longitude);
           setLocation({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
           setError("");
-
-          // Update the map and marker dynamically
-          if (map && marker) {
-            map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
-            marker.setPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
-          }
         },
         (err) => {
           setError("Unable to retrieve location.");
@@ -263,19 +258,19 @@ const HomePage = () => {
             { name: "The Crow Museum of Asian Art", image: "/images/crowmuseum.png" },
           ])}
           {renderScrollableSection("Historical Hotspots", [
-            { name: "Hotspot 1", image: "/images/hotspot1.jpg" },
-            { name: "Hotspot 2", image: "/images/hotspot2.jpg" },
-            { name: "Hotspot 3", image: "/images/hotspot3.jpg" },
+            { name: "Hotspot 1", image: "/images/dma.jpg" },
+            { name: "Hotspot 2", image: "/images/henryHobsin.jpg" },
+            { name: "Hotspot 3", image: "/images/mckamySpring.jpg" },
           ])}
           {renderScrollableSection("Self-Guided Tours", [
-            { name: "Tour 1", image: "/images/tour1.jpg" },
-            { name: "Tour 2", image: "/images/tour2.jpg" },
-            { name: "Tour 3", image: "/images/tour3.jpg" },
+            { name: "Tour 1", image: "/images/busTour.jpg" },
+            { name: "Tour 2", image: "/images/dallasTour.jpg" },
+            { name: "Tour 3", image: "/images/utdTour.jpg" },
           ])}
           {renderScrollableSection("Recent Community Posts", [
-            { name: "Post 1", image: "/images/post1.jpg" },
-            { name: "Post 2", image: "/images/post2.jpg" },
-            { name: "Post 3", image: "/images/post3.jpg" },
+            { name: "Post 1", image: "/images/gaming.png" },
+            { name: "Post 2", image: "/images/water.png" },
+            { name: "Post 3", image: "/images/oldpeople.png" },
           ])}
         </div>
       </div>
