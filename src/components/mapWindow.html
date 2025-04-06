@@ -1,0 +1,76 @@
+<!doctype html>
+<!--
+ @license
+ Copyright 2023 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <title>Info Windows</title>
+    <script>
+      
+      /**
+       * @license
+       * Copyright 2023 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+
+      // This example displays a marker at the center of Australia.
+      // When the user clicks the marker, an info window opens.
+      async function initMap() {
+        const contentString = `
+      <div>
+      <h1>The Love Jack</h1>
+      <div>
+        <p>
+          "<b>The Love Jack</b>, affectionately known as the Love Jack by generations of UT Dallas students, the 10-foot-by-10-foot red, steel sculpture was created by Texas artist Jim Love and was gifted to UT Dallas in 1976. 
+          The sculpture is located in the center of the campus, near the Student Union and the Green Center."
+        </p>
+        <p>
+          Attribution: The Love Jack
+          <a href="https://magazine.utdallas.edu/2017/07/10/40-year-love-story/
+          </a>
+          (last visited June 22, 2009).
+        </p>
+      </div>
+    </div>`;
+        const infoWindow = new google.maps.InfoWindow({
+          content: contentString,
+          ariaLabel: "The Love Jack",
+        });
+
+        const marker = document.querySelector('gmp-advanced-marker');
+        marker.addEventListener('gmp-click', () => {
+          infoWindow.open({anchor: marker});
+        });
+      }
+
+      window.initMap = initMap;
+    </script>
+    <style>
+      /**
+       * @license
+       * Copyright 2023 Google LLC. All Rights Reserved.
+       * SPDX-License-Identifier: Apache-2.0
+       */
+
+      /*
+       * Optional: Makes the sample page fill the window.
+       */
+      html,
+      body {
+        height: 90%;
+        margin: 50;
+      }
+    </style>
+  </head>
+  <body>
+    <gmp-map center="32.990669, -96.749680" zoom="4" map-id="DEMO_MAP_ID">
+      <gmp-advanced-marker position="32.990669, -96.749680" title="The Love Jack" gmp-clickable></gmp-advanced-marker>
+    </gmp-map>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClqRd5uLObGLdbF-KDkaLO1xEN6X0grOc&callback=console.debug&libraries=maps,marker&v=beta&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2"
+      defer
+    ></script>
+  </body>
+</html>
