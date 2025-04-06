@@ -76,10 +76,10 @@ const HomePage = () => {
         {/* Map */}
         <div id="map" className="rectangle"></div>
 
+        <h1 className="text-wrapper-1">EnVoyage</h1>
         <p className="text-wrapper">
           Let’s Transcend Time/Living through the past
         </p>        
-
         <div className="ellipse-3" />
         <div className="ellipse-4" />
         <div className="ellipse-5" />
@@ -100,7 +100,6 @@ const HomePage = () => {
         <div className="rectangle-11" />
         <div className="rectangle-12" />
         <div className="rectangle-13" />
-        
 
         {/* Map Controls */}
         <div className="container" style={{ marginTop: "20px" }}>
