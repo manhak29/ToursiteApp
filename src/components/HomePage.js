@@ -5,6 +5,7 @@ import "../styles/styles.css"; // Import the Figma styles
 const HomePage = () => {
   const [location, setLocation] = useState({ latitude: 32.9859827, longitude: -96.7512878 });
   const [error, setError] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); // State for search input
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -52,22 +53,33 @@ const HomePage = () => {
     }
   }, [location]);
 
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+    console.log("Search Query:", event.target.value); // Handle search logic here
+  };
+
   return (
     <div className="homepage">
       <div className="div">
-        <div className="ellipse" />
-        {/* Replace the rectangle with the map */}
+        {/* Removed the ellipse */}
+        {/* Search Bar */}
+        <div className="search-bar">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={handleSearch}
+          />
+        </div>
+
+        {/* Map */}
         <div id="map" className="rectangle"></div>
+
         <p className="text-wrapper">
           Let’s Transcend Time/Living through the past
-        </p>
-        <div className="group">
-          <div className="overlap-group-wrapper">
-            <div className="overlap-group">
-              <div className="ellipse-2" />
-            </div>
-          </div>
-        </div>
+        </p>        
+
         <div className="ellipse-3" />
         <div className="ellipse-4" />
         <div className="ellipse-5" />
@@ -88,6 +100,7 @@ const HomePage = () => {
         <div className="rectangle-11" />
         <div className="rectangle-12" />
         <div className="rectangle-13" />
+        
 
         {/* Map Controls */}
         <div className="container" style={{ marginTop: "20px" }}>
