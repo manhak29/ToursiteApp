@@ -1,0 +1,126 @@
+import React from "react";
+import image from "./image.svg";
+import line1 from "./line-1.svg";
+import line13 from "./line-13.svg";
+import line29 from "./line-29.svg";
+import line302 from "./line-30-2.svg";
+import line30 from "./line-30.svg";
+import line31 from "./line-31.svg";
+import line32 from "./line-32.svg";
+import line34 from "./line-34.svg";
+import line36 from "./line-36.svg";
+import line38 from "./line-38.svg";
+import line39 from "./line-39.svg";
+import line40 from "./line-40.svg";
+import line41 from "./line-41.svg";
+import line42 from "./line-42.svg";
+import line43 from "./line-43.svg";
+import line44 from "./line-44.svg";
+import line45 from "./line-45.svg";
+import line46 from "./line-46.svg";
+import line47 from "./line-47.svg";
+import "./style.css";
+
+export const Homepage = () => {
+  return (
+    <div className="homepage">
+      <div className="div">
+        <div className="ellipse" />
+
+        <img className="line" alt="Line" src={line1} />
+
+        <div className="rectangle" />
+
+        <img className="img" alt="Line" src={line29} />
+
+        <img className="line-2" alt="Line" src={line30} />
+
+        <p className="text-wrapper">
+          Let’s Transcend Time/Living through the past
+        </p>
+
+        <div className="group">
+          <div className="overlap-group-wrapper">
+            <div className="overlap-group">
+              <div className="ellipse-2" />
+
+              <img className="line-3" alt="Line" src={line13} />
+            </div>
+          </div>
+        </div>
+
+        <div className="ellipse-3" />
+
+        <div className="ellipse-4" />
+
+        <div className="ellipse-5" />
+
+        <div className="ellipse-6" />
+
+        <img className="line-4" alt="Line" src={image} />
+
+        <img className="line-5" alt="Line" src={line302} />
+
+        <img className="line-6" alt="Line" src={line31} />
+
+        <img className="line-7" alt="Line" src={line38} />
+
+        <img className="line-8" alt="Line" src={line32} />
+
+        <img className="line-9" alt="Line" src={line40} />
+
+        <img className="line-10" alt="Line" src={line44} />
+
+        <img className="line-11" alt="Line" src={line34} />
+
+        <img className="line-12" alt="Line" src={line41} />
+
+        <img className="line-13" alt="Line" src={line45} />
+
+        <img className="line-14" alt="Line" src={line36} />
+
+        <img className="line-15" alt="Line" src={line42} />
+
+        <img className="line-16" alt="Line" src={line46} />
+
+        <div className="text-wrapper-2">Recent Exploration</div>
+
+        <div className="text-wrapper-3">Historical Hotspots</div>
+
+        <div className="text-wrapper-4">Self-Guided Tours</div>
+
+        <div className="text-wrapper-5">Recent Community Posts</div>
+
+        <div className="rectangle-2" />
+
+        <div className="rectangle-3" />
+
+        <div className="rectangle-4" />
+
+        <div className="rectangle-5" />
+
+        <div className="rectangle-6" />
+
+        <div className="rectangle-7" />
+
+        <img className="line-17" alt="Line" src={line39} />
+
+        <img className="line-18" alt="Line" src={line43} />
+
+        <img className="line-19" alt="Line" src={line47} />
+
+        <div className="rectangle-8" />
+
+        <div className="rectangle-9" />
+
+        <div className="rectangle-10" />
+
+        <div className="rectangle-11" />
+
+        <div className="rectangle-12" />
+
+        <div className="rectangle-13" />
+      </div>
+    </div>
+  );
+};
