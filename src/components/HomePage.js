@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaSearch } from "react-icons/fa"; // Import Font Awesome search icon
 import "../styles/App.css";
 import "../styles/styles.css"; // Import the Figma styles
 
@@ -63,10 +64,15 @@ const HomePage = () => {
       <h3 className="section-title">{title}</h3>
       <div className="scroll-container">
         {items.map((item, index) => (
-          <div key={index} className="circle-item">
-            <div className="circle"></div>
-            <p className="place-name">{item}</p>
-          </div>
+          <a
+            key={index}
+            href={`/places/${item.name.toLowerCase().replace(/\s+/g, "-")}`} // Generate a URL based on the place name
+            className="image-item"
+            style={{ textDecoration: "none" }} // Remove underline from links
+          >
+            <img src={item.image} alt={item.name} className="image" />
+            <p className="place-name">{item.name}</p>
+          </a>
         ))}
       </div>
     </div>
@@ -74,9 +80,13 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+      {/* User Circle */}
+      <div className="user-circle"></div>
+
       {/* Title Div */}
       <div className="title-div">
         <h1>EnVoyage</h1>
+        <p>Let's transcend time through the past</p>
       </div>
 
       <div className="big-div">
@@ -84,6 +94,7 @@ const HomePage = () => {
         <div className="left-div">
           {/* Search Bar */}
           <div className="search-bar">
+            <FaSearch className="search-icon" /> {/* Add the search icon */}
             <input
               type="text"
               className="search-input"
@@ -99,10 +110,26 @@ const HomePage = () => {
 
         {/* Right Side: Sections */}
         <div className="right-big-div">
-          {renderScrollableSection("Recent Exploration", ["Place 1", "Place 2", "Place 3"])}
-          {renderScrollableSection("Historical Hotspots", ["Hotspot 1", "Hotspot 2", "Hotspot 3"])}
-          {renderScrollableSection("Self-Guided Tours", ["Tour 1", "Tour 2", "Tour 3"])}
-          {renderScrollableSection("Recent Community Posts", ["Post 1", "Post 2", "Post 3"])}
+          {renderScrollableSection("Recent Exploration", [
+            { name: "The Love Jack", image: "/images/thelovejack.png" },
+            { name: "The Plinth", image: "/images/plinth.png" },
+            { name: "The Crow Museum of Asian Art", image: "/images/crowmuseum.png" },
+          ])}
+          {renderScrollableSection("Historical Hotspots", [
+            { name: "Hotspot 1", image: "/images/hotspot1.jpg" },
+            { name: "Hotspot 2", image: "/images/hotspot2.jpg" },
+            { name: "Hotspot 3", image: "/images/hotspot3.jpg" },
+          ])}
+          {renderScrollableSection("Self-Guided Tours", [
+            { name: "Tour 1", image: "/images/tour1.jpg" },
+            { name: "Tour 2", image: "/images/tour2.jpg" },
+            { name: "Tour 3", image: "/images/tour3.jpg" },
+          ])}
+          {renderScrollableSection("Recent Community Posts", [
+            { name: "Post 1", image: "/images/post1.jpg" },
+            { name: "Post 2", image: "/images/post2.jpg" },
+            { name: "Post 3", image: "/images/post3.jpg" },
+          ])}
         </div>
       </div>
 
