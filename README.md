@@ -1,50 +1,32 @@
-# ToursitApp
+# EnVoyage Tourist App
 
-## Overview
-ToursitApp is a React application designed to provide users with an interactive platform to explore various tourist destinations. The application features a clean and user-friendly interface, allowing users to easily navigate through different sections and discover new places.
+EnVoyage is a React-based web application designed to help users explore historical hotspots, self-guided tours, and community posts. The app integrates Google Maps to allow users to search for locations and view them on an interactive map. It also features a clean and modern UI with dropdown menus, scrollable sections, and a responsive layout.
+
+---
 
 ## Features
-- Interactive user interface built with React
-- Responsive design for optimal viewing on various devices
-- Easy navigation through tourist destinations
-- Customizable components for future enhancements
 
-## Getting Started
+- **Google Maps Integration**: Search for locations and view them on an interactive map.
+- **Search Functionality**: Users can search for specific locations using the search bar.
+- **Scrollable Sections**: Explore recent explorations, historical hotspots, self-guided tours, and community posts.
+- **User Profile Dropdown**: A profile icon with a dropdown menu for navigation (Profile, Settings, Logout).
+- **Responsive Design**: The app is designed to work seamlessly across devices.
+- **Custom Theme**: A bright and warm color palette is used for a visually appealing experience.
 
-### Prerequisites
-- Node.js (version 14 or higher)
-- npm (version 6 or higher)
+---
 
-### Installation
+## Technologies Used
+
+- **React**: For building the user interface.
+- **Google Maps JavaScript API**: For map rendering and geocoding.
+- **CSS**: For styling the application.
+- **Font Awesome**: For icons in the search bar.
+
+---
+
+## Installation
+
 1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/ToursitApp.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd ToursitApp
-   ```
-3. Install the dependencies:
-   ```
-   npm install
-   ```
-
-### Running the Application
-To start the development server, run:
-```
-npm start
-```
-The application will be available at `http://localhost:3000`.
-
-### Building for Production
-To create a production build, run:
-```
-npm run build
-```
-The build artifacts will be stored in the `build` directory.
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+   ```bash
+   git clone https://github.com/your-username/tourist-app.git
+   cd tourist-app
