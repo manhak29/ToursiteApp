@@ -8,6 +8,7 @@ const HomePage = () => {
   const [error, setError] = useState(""); // State for error messages
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const [map, setMap] = useState(null); // State to store the map instance
+  const [marker, setMarker] = useState(null); // State to store the marker instance
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
 
   const toggleDropdown = () => {
@@ -23,6 +24,12 @@ const HomePage = () => {
             longitude: position.coords.longitude,
           });
           setError("");
+
+          // Update the map and marker dynamically
+          if (map && marker) {
+            map.setCenter({ lat: position.coords.latitude, lng: position.coords.longitude });
+            marker.setPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
+          }
         },
         (err) => {
           setError("Unable to retrieve location.");
@@ -34,17 +41,109 @@ const HomePage = () => {
   };
 
   useEffect(() => {
+    getLocation(); // Automatically get the user's location when the page loads
+
     if (window.google) {
       const mapInstance = new window.google.maps.Map(document.getElementById("map"), {
         center: { lat: location.latitude, lng: location.longitude },
-        zoom: 10,
+        zoom: 15,
       });
       setMap(mapInstance);
 
-      new window.google.maps.Marker({
+      // Add a marker for the user's current location
+      const markerInstance = new window.google.maps.Marker({
         position: { lat: location.latitude, lng: location.longitude },
         map: mapInstance,
         title: "You are here!",
+      });
+      setMarker(markerInstance);
+
+      // Add a marker for "The Love Jack"
+      const loveJackMarker = new window.google.maps.Marker({
+        position: { lat: 32.990669, lng: -96.749680 },
+        map: mapInstance,
+        title: "The Love Jack",
+      });
+
+      // Add a marker for the user's current location
+      const plinthInstance = new window.google.maps.Marker({
+        position: { lat: 32.9873, lng:  -96.7483 },
+        map: mapInstance,
+        title: "The Plinth",
+      });
+      setMarker(markerInstance);
+
+      // Create an info window for "The Love Jack"
+      const loveJackInfoWindow = new window.google.maps.InfoWindow({
+        content: `
+          <div>
+      <h1>The Love Jack</h1>
+      <div>
+        <p>
+          "<b>The Love Jack</b>, affectionately known as the Love Jack by generations of UT Dallas students, the 10-foot-by-10-foot red, steel sculpture was created by Texas artist Jim Love and was gifted to UT Dallas in 1976. 
+          The sculpture is located in the center of the campus, near the Student Union and the Green Center."
+        </p>
+        <p>
+          <img src="/images/thelovejack.png" alt="The Love Jack" width="200" height="200" /
+          (last visited June 22, 2009).
+        </p>
+      </div>
+        `,
+      });
+
+      const plinthWindow = new window.google.maps.InfoWindow({
+        content: `
+          <div>
+      <h1>The Plinth</h1>
+      <div>
+        <p>
+          "<b>The Plinth</b>, Popular gathering spot at the University of Texas at Dallas with food and recreation nearby."
+        </p>
+        <p>
+          <img src="/images/plinth.png" alt="The Plinth" width="200" height="200" /
+          (last visited June 22, 2009).
+        </p>
+      </div>
+        `,
+      });
+
+      
+
+      // Add a click listener to the "The Love Jack" marker to open the info window
+      loveJackMarker.addListener("click", () => {
+        loveJackInfoWindow.open({
+          anchor: loveJackMarker,
+          map: mapInstance,
+          shouldFocus: false,
+        });
+      });
+
+      // Add a click listener to the "The Love Jack" marker to open the info window
+      plinthInstance.addListener("click", () => {
+        plinthWindow.open({
+          anchor: plinthInstance,
+          map: mapInstance,
+          shouldFocus: false,
+        });
+      });
+
+      // Create an info window for the user's location
+      const userInfoWindow = new window.google.maps.InfoWindow({
+        content: `
+          <div>
+            <h1>You are here!</h1>
+            <p>This is your current location.</p>
+          </div>
+        `,
+      });
+
+      // Add a click listener to the user's marker to open the info window
+      markerInstance.addListener("click", () => {
+        userInfoWindow.open({
+          anchor: markerInstance,
+          map: mapInstance,
+          shouldFocus: false,
+        });
       });
     }
   }, [location]);
@@ -65,11 +164,7 @@ const HomePage = () => {
         if (status === "OK") {
           const newLocation = results[0].geometry.location;
           map.setCenter(newLocation); // Update the map's center
-          new window.google.maps.Marker({
-            position: newLocation,
-            map: map,
-            title: searchQuery,
-          });
+          marker.setPosition(newLocation); // Update the marker's position
           setError(""); // Clear any previous errors
         } else if (status === "ZERO_RESULTS") {
           setError("Location not found. Please try a different query.");
@@ -103,16 +198,33 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      {/* User Circle */}
-      
+      {/* Show Location Button */}
+      <button
+        className="show-location-button"
+        onClick={getLocation}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          zIndex: 1000,
+          padding: "10px 15px",
+          backgroundColor: "#ef6e34",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Show Your Location
+      </button>
 
       {/* Title Div */}
-      <div class="title-div">
-    <h1>EnVoyage</h1>
-    <p>Let's transcend time through our past!</p>
-</div>
+      <div className="title-div">
+        <h1>EnVoyage</h1>
+        <p>Transcend Time, Unite Generations!</p>
+      </div>
 
-<div className="user-circle" onClick={toggleDropdown}></div>
+      <div className="user-circle" onClick={toggleDropdown}></div>
       {isDropdownOpen && (
         <div className="dropdown-menu">
           <ul>
@@ -167,14 +279,6 @@ const HomePage = () => {
           ])}
         </div>
       </div>
-
-      {/* Map Controls
-      <div className="container">
-        <button className="button" onClick={getLocation}>
-          Show My Location
-        </button>
-        {error && <p id="demo" style={{ color: "red" }}>{error}</p>}
-      </div> */}
     </div>
   );
 };
